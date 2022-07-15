@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Url shortener</title>
+    <style>
+        .center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        {% if url %}
+            <div>
+                <a href="{{url}}">{{url}}</a>
+                <br/>
+                Clicks: {{clicks}}
+            </div>
+        {% else %}
+            <form name="input" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Shorten">
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
